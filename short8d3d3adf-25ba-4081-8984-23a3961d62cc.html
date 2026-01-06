@@ -113,7 +113,6 @@
       padding: 16px;
     }
 
-    /* Instructions */
     ol{
       margin:0;
       padding-left: 1.25rem;
@@ -168,7 +167,6 @@
       white-space: nowrap;
     }
 
-    /* Floating button (bottom-right) */
     .floating-next{
       position: fixed;
       right: 18px;
@@ -235,14 +233,12 @@
 
   <div class="container py-5 wrap">
 
-    <!-- Header -->
     <header class="topbar">
       <img src="logo.png" alt="Logo" class="logo">
       <h1 class="title">ACSL Instructions</h1>
       <p class="subtitle">Please read the instructions carefully before starting the exam.</p>
     </header>
 
-    <!-- Instructions -->
     <div class="section mb-4">
       <div class="section-head">
         <h5 class="section-h"><span class="dot"></span>Instructions</h5>
@@ -256,7 +252,6 @@
       </div>
     </div>
 
-    <!-- Document -->
     <div class="section">
       <div class="section-head">
         <h5 class="section-h"><span class="dot"></span>Problem</h5>
@@ -264,8 +259,8 @@
       </div>
 
       <div class="section-body">
-        <img src="page3.png" class="pdf-page" alt="Page 1">
-        <img src="page4.png" class="pdf-page" alt="Page 2">
+        <img src="page1.png" class="pdf-page" alt="Page 1">
+        <img src="page2.png" class="pdf-page" alt="Page 2">
       </div>
     </div>
 
@@ -276,7 +271,7 @@
   </div>
 
 
-  <a class="floating-next disabled" id="completeBtn" href="done.html" aria-disabled="true">
+  <a class="floating-next disabled" id="completeBtn" href="restb52faba2-6c1e-467f-81d8-9ca047b83eaa.html" aria-disabled="true">
     Complete Exam <span aria-hidden="true">→</span>
   </a>
 
@@ -326,12 +321,13 @@
       let b = false;
       if (last){
         const r = last.getBoundingClientRect();
-        b = (r.top <= window.innerHeight * 0.70);
+        b = (r.top <= window.innerHeight * 0.70); 
       }
 
       setCompleteEnabled(a && b);
     }
 
+    // Prevent navigation when disabled
     completeBtn.addEventListener('click', (e) => {
       if (completeBtn.classList.contains('disabled')) {
         e.preventDefault();
