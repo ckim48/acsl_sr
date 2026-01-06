@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ACSL • Instructions</title>
+  <title>ACSL • Rest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
@@ -16,7 +16,7 @@
       --card:#ffffff;
       --brand:#2563eb;
       --brand2:#0ea5e9;
-      --good:#16a34a;
+      --warn:#f59e0b;
     }
 
     body{
@@ -38,6 +38,7 @@
       padding: 10px 0 18px;
       border-bottom: 1px solid var(--line);
       margin-bottom: 22px;
+      text-align:center;
     }
 
     .logo{
@@ -52,14 +53,12 @@
       margin: 0;
       font-size: 1.25rem;
       line-height: 1.2;
-      text-align:center;
     }
 
     .subtitle{
       margin: 0;
       color: var(--muted);
       font-size: .95rem;
-      text-align:center;
     }
 
     /* Card */
@@ -91,6 +90,15 @@
       gap:.6rem;
     }
 
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(180deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+      flex:0 0 auto;
+    }
+
+    .section-body{ padding: 16px; }
+
     .badge-soft{
       display:inline-flex;
       align-items:center;
@@ -105,27 +113,6 @@
       white-space: nowrap;
     }
 
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(180deg, var(--brand), var(--brand2));
-      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
-      flex:0 0 auto;
-    }
-
-    .section-body{ padding: 16px; }
-
-    /* Instructions */
-    ol{
-      margin:0;
-      padding-left: 1.25rem;
-    }
-    ol li{
-      margin: .45rem 0;
-      line-height: 1.5;
-      color: var(--ink);
-    }
-
-    /* Fixed indicators */
     .time-indicator{
       position: fixed;
       top: 16px;
@@ -142,66 +129,95 @@
       white-space: nowrap;
     }
 
-    /* Start CTA */
-    .cta{
+    /* Big message */
+    .rest-box{
+      border: 1px dashed rgba(245,158,11,.45);
+      background: rgba(245,158,11,.08);
+      border-radius: 14px;
+      padding: 14px;
+      color: var(--ink);
+    }
+    .rest-box .small{
+      color: var(--muted);
+    }
+
+    /* Proctor gate */
+    .gate{
       display:flex;
       flex-wrap:wrap;
+      gap:10px;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
       padding: 14px 16px;
-      border-top: 1px solid var(--line);
-      background: #fff;
+      border-top:1px solid var(--line);
+      background:#fff;
     }
 
-    .checkline{
+    .pin-row{
       display:flex;
       align-items:center;
-      gap:.6rem;
-      color: var(--muted);
-      font-size: .95rem;
-      user-select:none;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    .checkline input{
-      width: 18px;
-      height: 18px;
-      border-radius: 6px;
-      accent-color: var(--brand);
+    .pin-label{
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: .2px;
     }
 
-    .btn-start{
-      border:0;
-      padding: 10px 14px;
+    .pin{
+      width: 160px;
+      max-width: 100%;
       border-radius: 12px;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      outline: none;
+    }
+    .pin:focus{
+      border-color: rgba(37,99,235,.45);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+    }
+
+    .btn-next{
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 14px;
       font-weight: 800;
       letter-spacing: .2px;
       color:#fff;
       background: linear-gradient(180deg, var(--brand), var(--brand2));
-      box-shadow: 0 10px 22px rgba(37,99,235,.22);
+      box-shadow: 0 14px 30px rgba(37,99,235,.22);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
       transition: transform .12s ease, filter .12s ease, opacity .12s ease;
     }
-    .btn-start:hover{ transform: translateY(-1px); filter: brightness(1.02); }
-    .btn-start:disabled{
-      opacity: .55;
-      cursor: not-allowed;
-      transform: none;
-      filter: none;
-      box-shadow: none;
+    .btn-next:hover{ transform: translateY(-1px); filter: brightness(1.02); color:#fff; }
+    .btn-next.disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none;
+      filter:none;
+      box-shadow:none;
+      pointer-events:none;
     }
 
-    .hint{
-      margin: 0;
+    .help{
+      margin: 10px 0 0;
       color: var(--muted);
-      font-size: .9rem;
+      font-size: .92rem;
     }
 
     @media (max-width: 576px){
       .wrap{ max-width: 100%; }
       .title{ font-size: 1.1rem; }
       .time-indicator{ top: 10px; left: 10px; }
-      .cta{ align-items:stretch; }
-      .btn-start{ width: 100%; }
+      .gate{ align-items:stretch; }
+      .btn-next{ width: 100%; justify-content:center; }
+      .pin-row{ width: 100%; }
+      .pin{ width: 100%; }
     }
   </style>
 </head>
@@ -214,62 +230,74 @@
     <!-- Header -->
     <header class="topbar">
       <img src="logo.png" alt="Logo" class="logo">
-      <h1 class="title">ACSL Instructions</h1>
-      <p class="subtitle">Please read the instructions carefully before starting the exam.</p>
+      <h1 class="title">Rest Time</h1>
+      <p class="subtitle">Please wait for the proctor’s instruction before continuing.</p>
     </header>
 
     <div class="section">
       <div class="section-head">
-        <h5 class="section-h"><span class="dot"></span>Instructions</h5>
-        <span class="badge-soft">Before you start</span>
+        <h5 class="section-h"><span class="dot"></span>Pause</h5>
+        <span class="badge-soft">Do not proceed yet</span>
       </div>
 
       <div class="section-body">
-        <ol>
-          <li>Please solve the programming question at the following link:
-            <a href="https://www.onlinegdb.com/" target="_blank" rel="noopener">Online Compiler</a>
-          </li>
-          <li>Do not refresh the exam page once you start.</li>
-          <li>Make sure your name and class information are correct.</li>
-          <li>When you’re ready, confirm you’ve read all instructions and click <b>Start Exam</b>.</li>
-        </ol>
-        <p class="hint mt-3 mb-0">Tip: Open the compiler in a new tab so you can switch back to the exam easily.</p>
+        <div class="rest-box">
+          <div class="fw-bold mb-1">Stop here and rest.</div>
+          <div class="small">
+            Keep this page open. When the proctor tells you to continue, the proctor will provide a passcode to unlock the next section.
+          </div>
+        </div>
+
+        <p class="help mb-0">
+          Do not refresh this page. If something goes wrong, raise your hand and wait for the proctor.
+        </p>
       </div>
 
-      <div class="cta">
-        <label class="checkline">
-          <input type="checkbox" id="agreeCheck">
-          <span>I have read and understand the instructions.</span>
-        </label>
+      <div class="gate">
+        <div class="pin-row">
+          <span class="pin-label">Proctor Passcode</span>
+          <input id="pin" class="pin" type="password" inputmode="numeric" autocomplete="one-time-code" placeholder="Enter code">
+        </div>
 
-        <a class="btn btn-start btn-start-link" id="startBtn" href="short123098.html" aria-disabled="true">Start Exam</a>
+        <a id="goBtn" class="btn-next disabled" href="programming123098.html" aria-disabled="true">
+          Continue to Programming <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
 
   </div>
 
   <script>
-    const agreeCheck = document.getElementById('agreeCheck');
-    const startBtn = document.getElementById('startBtn');
+    // Disable right-click
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
 
-    function syncStartState(){
-      const ok = !!agreeCheck.checked;
-      startBtn.classList.toggle('disabled', !ok);
-      startBtn.setAttribute('aria-disabled', String(!ok));
-      if(!ok){
-        startBtn.addEventListener('click', preventIfDisabled, { once:false });
-      }
+    const PROCTOR_CODE = "2026";
+
+    const pin = document.getElementById('pin');
+    const goBtn = document.getElementById('goBtn');
+
+    function setEnabled(enabled){
+      goBtn.classList.toggle('disabled', !enabled);
+      goBtn.setAttribute('aria-disabled', String(!enabled));
     }
 
-    function preventIfDisabled(e){
-      if(startBtn.classList.contains('disabled')){
+    function checkPin(){
+      const ok = (pin.value || "").trim() === PROCTOR_CODE;
+      setEnabled(ok);
+    }
+
+    goBtn.addEventListener('click', (e) => {
+      if (goBtn.classList.contains('disabled')) {
         e.preventDefault();
         e.stopPropagation();
+        pin.focus();
       }
-    }
+    });
 
-    agreeCheck.addEventListener('change', syncStartState);
-    syncStartState();
+    pin.addEventListener('input', checkPin);
+    window.addEventListener('load', checkPin);
   </script>
 
   <!-- Bootstrap JS -->
