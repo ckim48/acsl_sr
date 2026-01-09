@@ -5,7 +5,6 @@
   <title>ACSL • Instructions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
@@ -16,263 +15,291 @@
       --card:#ffffff;
       --brand:#2563eb;
       --brand2:#0ea5e9;
-      --good:#16a34a;
+      --danger:#dc2626;
+      --warn:#f59e0b;
     }
 
-    body{
-      background:#ffffff;
-      color:var(--ink);
-    }
+    body{ background:#ffffff; color:var(--ink); }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-    }
+    .wrap{ max-width: 980px; margin: 0 auto; }
 
-    /* Top header */
     .topbar{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:.5rem;
-      padding: 10px 0 18px;
+      display:flex; flex-direction:column; align-items:center;
+      gap:.5rem; padding: 10px 0 18px;
       border-bottom: 1px solid var(--line);
       margin-bottom: 22px;
-    }
-
-    .logo{
-      max-height: 78px;
-      user-select:none;
-      pointer-events:none;
-    }
-
-    .title{
-      font-weight: 800;
-      letter-spacing: -.02em;
-      margin: 0;
-      font-size: 1.25rem;
-      line-height: 1.2;
       text-align:center;
     }
 
-    .subtitle{
-      margin: 0;
-      color: var(--muted);
-      font-size: .95rem;
-      text-align:center;
-    }
+    .logo{ max-height: 78px; pointer-events:none; user-select:none; }
 
-    /* Card */
+    .title{ font-weight:800; font-size:1.25rem; margin:0; letter-spacing:-.01em; }
+    .subtitle{ color:var(--muted); font-size:.95rem; margin:0; }
+
     .section{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+      border-radius:16px;
+      box-shadow:0 10px 28px rgba(15,23,42,.06);
       overflow:hidden;
     }
 
     .section-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 14px 16px;
-      border-bottom:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(37,99,235,.06), rgba(14,165,233,.03));
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 16px; border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(37,99,235,.06), rgba(14,165,233,.03));
     }
 
-    .section-h{
-      font-weight: 800;
-      font-size: 1.02rem;
-      letter-spacing: .2px;
-      margin: 0;
-      display:flex;
-      align-items:center;
-      gap:.6rem;
+    .section-h{ font-weight:800; display:flex; gap:.6rem; align-items:center; margin:0; }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:linear-gradient(180deg, var(--brand), var(--brand2));
+      box-shadow:0 0 0 4px rgba(37,99,235,.12);
     }
 
     .badge-soft{
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: .85rem;
-      color: var(--ink);
+      font-size:.85rem; padding:6px 10px; border-radius:999px;
+      background:rgba(37,99,235,.08);
       border:1px solid rgba(37,99,235,.18);
-      background: rgba(37,99,235,.08);
+      color:var(--ink);
+      white-space:nowrap;
       user-select:none;
-      white-space: nowrap;
     }
 
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(180deg, var(--brand), var(--brand2));
-      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
-      flex:0 0 auto;
+    .section-body{ padding:16px; }
+
+    /* BIG RED WARNING */
+    .alert-danger-strong{
+      border:2px solid var(--danger);
+      color:var(--danger);
+      background:rgba(220,38,38,.06);
+      border-radius:14px;
+      padding:14px;
+      font-weight:900;
+      font-size:1.15rem;
+      text-align:center;
+      margin-bottom:16px;
+      letter-spacing:.2px;
     }
 
-    .section-body{ padding: 16px; }
-
-    /* Instructions */
-    ol{
-      margin:0;
-      padding-left: 1.25rem;
-    }
-    ol li{
-      margin: .45rem 0;
-      line-height: 1.5;
-      color: var(--ink);
+    /* Highlight box (break rules) */
+    .highlight{
+      background:rgba(245,158,11,.08);
+      border-left:4px solid var(--warn);
+      padding:12px 14px;
+      border-radius:10px;
+      margin:14px 0;
     }
 
-    /* Fixed indicators */
-    .time-indicator{
-      position: fixed;
-      top: 16px;
-      left: 18px;
-      z-index: 1000;
+    ul{ padding-left:1.2rem; margin-bottom:0; }
+    ul li{ margin:.5rem 0; line-height:1.55; }
+
+    .policy{
       background:#fff;
-      border:1px solid var(--line);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: .9rem;
-      color: var(--muted);
-      box-shadow: 0 10px 22px rgba(15, 23, 42, .06);
-      user-select:none;
-      white-space: nowrap;
+      border:1px dashed var(--danger);
+      border-radius:14px;
+      padding:14px;
+      margin-top:14px;
     }
 
-    /* Start CTA */
+    .policy h6{
+      color:var(--danger);
+      font-weight:900;
+      margin:0 0 8px;
+    }
+
+    .small-note{ color:var(--muted); font-size:.92rem; margin-top:10px; }
+
     .cta{
-      display:flex;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 14px 16px;
-      border-top: 1px solid var(--line);
-      background: #fff;
+      display:flex; gap:12px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      padding:14px 16px; border-top:1px solid var(--line);
+      background:#fff;
     }
 
-    .checkline{
-      display:flex;
-      align-items:center;
-      gap:.6rem;
-      color: var(--muted);
-      font-size: .95rem;
-      user-select:none;
-    }
-
+    .checkline{ display:flex; align-items:center; gap:.6rem; color:var(--muted); flex-wrap:wrap; }
     .checkline input{
-      width: 18px;
-      height: 18px;
-      border-radius: 6px;
+      width:18px; height:18px; border-radius:6px;
       accent-color: var(--brand);
+    }
+
+    .pin-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .pin-label{ font-weight:900; color:var(--ink); white-space:nowrap; letter-spacing:.2px; }
+
+    .pin{
+      width:170px;
+      max-width:100%;
+      border-radius:12px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      outline:none;
+    }
+    .pin:focus{
+      border-color: rgba(37,99,235,.45);
+      box-shadow:0 0 0 4px rgba(37,99,235,.12);
     }
 
     .btn-start{
       border:0;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 800;
-      letter-spacing: .2px;
+      border-radius:12px;
+      padding:10px 16px;
+      font-weight:900;
       color:#fff;
-      background: linear-gradient(180deg, var(--brand), var(--brand2));
-      box-shadow: 0 10px 22px rgba(37,99,235,.22);
+      background:linear-gradient(180deg, var(--brand), var(--brand2));
+      box-shadow:0 10px 22px rgba(37,99,235,.22);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
       transition: transform .12s ease, filter .12s ease, opacity .12s ease;
     }
-    .btn-start:hover{ transform: translateY(-1px); filter: brightness(1.02); }
-    .btn-start:disabled{
-      opacity: .55;
-      cursor: not-allowed;
-      transform: none;
-      filter: none;
-      box-shadow: none;
+    .btn-start:hover{ transform: translateY(-1px); filter: brightness(1.02); color:#fff; }
+    .btn-start.disabled{
+      opacity:.55;
+      pointer-events:none;
+      box-shadow:none;
+      transform:none;
+      filter:none;
     }
 
-    .hint{
-      margin: 0;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    @media (max-width: 576px){
-      .wrap{ max-width: 100%; }
-      .title{ font-size: 1.1rem; }
-      .time-indicator{ top: 10px; left: 10px; }
+    @media(max-width:576px){
+      .wrap{ max-width:100%; }
+      .btn-start,.pin{ width:100%; }
+      .pin-row{ width:100%; }
       .cta{ align-items:stretch; }
-      .btn-start{ width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <div class="time-indicator">Exam Time: 10:00 AM – 2:00 PM</div>
+<div class="container py-5 wrap">
 
-  <div class="container py-5 wrap">
+  <header class="topbar">
+    <img src="logo.png" class="logo" alt="Logo">
+    <h1 class="title">ACSL Instructions</h1>
+    <p class="subtitle">Read carefully before the exam begins.</p>
+  </header>
 
-    <!-- Header -->
-    <header class="topbar">
-      <img src="logo.png" alt="Logo" class="logo">
-      <h1 class="title">ACSL Instructions</h1>
-      <p class="subtitle">Please read the instructions carefully before starting the exam.</p>
-    </header>
-
-    <div class="section">
-      <div class="section-head">
-        <h5 class="section-h"><span class="dot"></span>Instructions</h5>
-        <span class="badge-soft">Before you start</span>
-      </div>
-
-      <div class="section-body">
-        <ol>
-          <li>Please solve the programming question at the following link:
-            <a href="https://www.onlinegdb.com/" target="_blank" rel="noopener">Online Compiler</a>
-          </li>
-          <li>Do not refresh the exam page once you start.</li>
-          <li>Make sure your name and class information are correct.</li>
-          <li>When you’re ready, confirm you’ve read all instructions and click <b>Start Exam</b>.</li>
-        </ol>
-        <p class="hint mt-3 mb-0">Tip: Open the compiler in a new tab so you can switch back to the exam easily.</p>
-      </div>
-
-      <div class="cta">
-        <label class="checkline">
-          <input type="checkbox" id="agreeCheck">
-          <span>I have read and understand the instructions.</span>
-        </label>
-
-        <a class="btn btn-start btn-start-link" id="startBtn" href="short8d3d3adf-25ba-4081-8984-23a3961d62cc.html" aria-disabled="true">Start Exam</a>
-      </div>
+  <div class="section">
+    <div class="section-head">
+      <h5 class="section-h"><span class="dot"></span>Important Instructions</h5>
+      <span class="badge-soft">Mandatory</span>
     </div>
 
+    <div class="section-body">
+
+      <div class="alert-danger-strong">
+        DO NOT START YOUR EXAM UNTIL THE PROCTOR TELLS YOU TO.
+      </div>
+
+      <ul>
+        <li><b>No electronics are allowed</b>, including <b>phones</b>, <b>smart watches</b>, and <b>calculators</b>. </li>
+
+        <li>You may use a <b>free online compiler/editor</b> for programming.</li>
+
+        <li>After each exam section (short programming and programming), you will find a <b>Google Form submission link</b>. Submit your answers using that link.</li>
+
+
+        <li><b>Only your first submission will be counted.</b> Duplicate submissions will not be accepted.</li>
+
+        <li><b>Do not refresh</b> this exam page at any time.</li>
+
+        <li>If you need help, <b>raise your hand</b> and wait for the proctor.</li>
+
+        <li><b>Early exit</b> is allowed. If you finish early, raise your hand and wait for the proctor’s instructions.</li>
+
+        <li><b>Exam schedule</b>:
+          <ul>
+            <li><b>Short: </b> 30 minutes</li>
+            <li><b>Short restroom break</b> (follow proctor instructions)</li>
+            <li><b>Programming:</b> 3 hours</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="policy">
+        <h6>Cheating Policy</h6>
+        <ul class="mb-0">
+          <li><b>Do not switch windows or change browsers</b> during the exam.</li>
+          <li><b>AI tools</b> (such as GPT or Gemini) are <b>not allowed</b>.</li>
+          <li><b>Do not share your exam link</b> with anyone.</li>
+          <li>If the link is accessed from more than one device or browser, the exam will be <b>immediately stopped</b>.</li>
+          <li>Any violation will result in <b>disqualification</b>.</li>
+        </ul>
+      </div>
+
+      <div class="highlight">
+        <b>During the break:</b>
+        <ul class="mb-0">
+          <li>Please <b>do not shut down</b> or close your computer.</li>
+          <li>Follow the proctor’s <b>instructions</b>.</li>
+        </ul>
+      </div>
+
+
+      <p class="small-note mb-0">
+        Note: Keep this page open. The proctor will provide a passcode to unlock the Start button.
+      </p>
+
+    </div>
+
+    <div class="cta">
+      <label class="checkline">
+        <input type="checkbox" id="agreeCheck">
+        <span>I have read and understand all instructions.</span>
+      </label>
+
+      <div class="pin-row">
+        <span class="pin-label">Proctor Passcode</span>
+        <input id="pin" class="pin" placeholder="Enter code" type="password" inputmode="numeric" autocomplete="one-time-code">
+      </div>
+
+      <a id="startBtn" class="btn-start disabled" href="short8d3d3adf-25ba-4081-8984-23a3961d62cc.html" aria-disabled="true">
+        Start Exam <span aria-hidden="true">→</span>
+      </a>
+    </div>
   </div>
+</div>
 
-  <script>
-    const agreeCheck = document.getElementById('agreeCheck');
-    const startBtn = document.getElementById('startBtn');
+<script>
+  // Optional: disable right-click
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
 
-    function syncStartState(){
-      const ok = !!agreeCheck.checked;
-      startBtn.classList.toggle('disabled', !ok);
-      startBtn.setAttribute('aria-disabled', String(!ok));
-      if(!ok){
-        startBtn.addEventListener('click', preventIfDisabled, { once:false });
-      }
+  // NOTE: Client-side code cannot be fully hidden from advanced users.
+  const PROCTOR_CODE = "0110";
+
+  const agreeCheck = document.getElementById('agreeCheck');
+  const pin = document.getElementById('pin');
+  const startBtn = document.getElementById('startBtn');
+
+  function setEnabled(enabled){
+    startBtn.classList.toggle('disabled', !enabled);
+    startBtn.setAttribute('aria-disabled', String(!enabled));
+  }
+
+  function syncStartState(){
+    const okCheck = !!agreeCheck.checked;
+    const okPin = (pin.value || "").trim() === PROCTOR_CODE;
+    setEnabled(okCheck && okPin);
+  }
+
+  startBtn.addEventListener('click', (e) => {
+    if (startBtn.classList.contains('disabled')) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!agreeCheck.checked) agreeCheck.focus();
+      else pin.focus();
     }
+  });
 
-    function preventIfDisabled(e){
-      if(startBtn.classList.contains('disabled')){
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    }
+  agreeCheck.addEventListener('change', syncStartState);
+  pin.addEventListener('input', syncStartState);
+  window.addEventListener('load', syncStartState);
+</script>
 
-    agreeCheck.addEventListener('change', syncStartState);
-    syncStartState();
-  </script>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

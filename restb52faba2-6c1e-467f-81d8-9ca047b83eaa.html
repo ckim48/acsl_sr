@@ -141,6 +141,31 @@
       color: var(--muted);
     }
 
+    /* IMPORTANT highlight (added) */
+    .break-alert{
+      margin-top: 12px;
+      border: 3px solid rgba(245,158,11,.55);
+      background: rgba(245,158,11,.12);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .break-alert .big{
+      font-weight: 950;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      margin: 0 0 6px;
+    }
+    .break-alert ul{
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .break-alert li{
+      margin: .45rem 0;
+      font-weight: 850;
+      font-size: 1.02rem;
+      line-height: 1.55;
+    }
+
     /* Proctor gate */
     .gate{
       display:flex;
@@ -230,7 +255,7 @@
     <!-- Header -->
     <header class="topbar">
       <img src="logo.png" alt="Logo" class="logo">
-      <h1 class="title">Rest Time</h1>
+      <h1 class="title">Break Time</h1>
       <p class="subtitle">Please wait for the proctor’s instruction before continuing.</p>
     </header>
 
@@ -246,6 +271,16 @@
           <div class="small">
             Keep this page open. When the proctor tells you to continue, the proctor will provide a passcode to unlock the next section.
           </div>
+        </div>
+
+        <!-- IMPORTANT BREAK INSTRUCTIONS (added + highlighted) -->
+        <div class="break-alert">
+          <div class="big">Important Break Instructions</div>
+          <ul>
+            <li>The proctor will tell you when the break starts and ends.</li>
+            <li>During the break, please <b>do not shut down</b> your computer.</li>
+            <li>If you finish the short problems early, wait for the proctor’s instructions.</li>
+          </ul>
         </div>
 
         <p class="help mb-0">

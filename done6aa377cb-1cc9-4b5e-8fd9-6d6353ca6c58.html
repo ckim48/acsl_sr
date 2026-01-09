@@ -17,19 +17,13 @@
       --brand:#2563eb;
       --brand2:#0ea5e9;
       --good:#16a34a;
+      --warn:#f59e0b;
     }
 
-    body{
-      background:#ffffff;
-      color:var(--ink);
-    }
+    body{ background:#ffffff; color:var(--ink); }
+    .wrap{ max-width: 980px; margin: 0 auto; }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    /* Top header (same style family) */
+    /* Header */
     .topbar{
       display:flex;
       flex-direction:column;
@@ -51,22 +45,21 @@
       font-weight: 900;
       letter-spacing: -.02em;
       margin: 0;
-      font-size: 1.35rem;
-      line-height: 1.2;
+      font-size: 1.25rem;
     }
 
     .subtitle{
       margin: 0;
       color: var(--muted);
-      font-size: .98rem;
+      font-size: .95rem;
     }
 
     /* Card */
     .section{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+      border-radius:16px;
+      box-shadow:0 10px 28px rgba(15,23,42,.06);
       overflow:hidden;
     }
 
@@ -74,8 +67,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
-      padding: 14px 16px;
+      padding:14px 16px;
       border-bottom:1px solid var(--line);
       background: linear-gradient(180deg, rgba(37,99,235,.06), rgba(14,165,233,.03));
     }
@@ -83,7 +75,6 @@
     .section-h{
       font-weight: 900;
       font-size: 1.02rem;
-      letter-spacing: .2px;
       margin: 0;
       display:flex;
       align-items:center;
@@ -91,114 +82,86 @@
     }
 
     .dot{
-      width:8px; height:8px; border-radius:999px;
+      width:8px;
+      height:8px;
+      border-radius:50%;
       background: linear-gradient(180deg, var(--brand), var(--brand2));
       box-shadow: 0 0 0 4px rgba(37,99,235,.12);
-      flex:0 0 auto;
     }
 
     .badge-soft{
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
       padding: 6px 10px;
       border-radius: 999px;
       font-size: .85rem;
       color: var(--ink);
       border:1px solid rgba(22,163,74,.20);
       background: rgba(22,163,74,.10);
-      user-select:none;
       white-space: nowrap;
     }
 
     .section-body{ padding: 16px; }
 
-    /* Fixed indicator (match prior pages) */
+    /* Time indicator */
     .time-indicator{
       position: fixed;
       top: 16px;
       left: 18px;
-      z-index: 1000;
       background:#fff;
       border:1px solid var(--line);
       border-radius: 999px;
       padding: 8px 12px;
       font-size: .9rem;
       color: var(--muted);
-      box-shadow: 0 10px 22px rgba(15, 23, 42, .06);
+      box-shadow: 0 10px 22px rgba(15,23,42,.06);
       user-select:none;
-      white-space: nowrap;
     }
 
-    /* Congrats panel */
-    .congrats{
+    /* Success box */
+    .success-box{
       border-radius: 14px;
       border: 1px solid rgba(22,163,74,.22);
       background: linear-gradient(180deg, rgba(22,163,74,.10), rgba(14,165,233,.05));
       padding: 14px;
+      margin-bottom: 14px;
     }
-    .congrats h2{
+
+    .success-box h2{
       margin: 0 0 6px;
       font-weight: 950;
-      letter-spacing: -.02em;
-      font-size: 1.15rem;
+      font-size: 1.12rem;
     }
-    .congrats p{
+
+    .success-box p{
       margin: 0;
       color: var(--muted);
-      line-height: 1.55;
       font-size: .95rem;
     }
 
-    /* Instruction list */
-    ul{
-      margin: 12px 0 0;
-      padding-left: 1.15rem;
-    }
-    ul li{
-      margin: .45rem 0;
-      line-height: 1.5;
-      color: var(--ink);
-    }
-    .subhint{
-      color: var(--muted);
-      font-size: .92rem;
-      margin-top: 10px;
+    /* FINAL IMPORTANT HIGHLIGHT */
+    .final-alert{
+      border: 3px solid rgba(245,158,11,.6);
+      background: rgba(245,158,11,.12);
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 14px;
     }
 
-    .footer-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-      padding: 14px 16px;
-      border-top: 1px solid var(--line);
-      background:#fff;
+    .final-alert ul{
+      margin: 0;
+      padding-left: 1.4rem;
     }
-    .btn-soft{
-      border:1px solid rgba(37,99,235,.22);
-      background: rgba(37,99,235,.08);
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 10px 12px;
-      font-weight: 800;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:.5rem;
-    }
-    .btn-soft:hover{
-      background: rgba(37,99,235,.12);
-      color: var(--ink);
+
+    .final-alert li{
+      font-size: 1.15rem;
+      font-weight: 900;
+      line-height: 1.65;
+      margin: .7rem 0;
     }
 
     @media (max-width: 576px){
       .wrap{ max-width: 100%; }
-      .title{ font-size: 1.15rem; }
+      .title{ font-size: 1.1rem; }
       .time-indicator{ top: 10px; left: 10px; }
-      .footer-row{ justify-content:stretch; }
-      .btn-soft{ width:100%; justify-content:center; }
     }
   </style>
 </head>
@@ -221,25 +184,19 @@
       </div>
 
       <div class="section-body">
-        <div class="congrats">
+        <div class="success-box">
           <h2>Great work.</h2>
-          <p>
-            Your work has been recorded. Please follow the instructions below and wait quietly.
-          </p>
+          <p>Your work has been recorded. Please read the instructions below carefully.</p>
         </div>
 
-        <ul>
-          <li>Do not close your laptop until the proctor confirms everyone is finished.</li>
-          <li>Raise your hand if you had any technical issues during the exam.</li>
-          <li>Remain seated and keep your workspace clear.</li>
-          <li>If you used an online compiler, make sure your final code is saved as instructed by the proctor.</li>
-        </ul>
-
-        <div class="subhint">
-          If you need to leave early, wait for the proctor’s permission.
+        <!-- STRONG FINAL NOTICE -->
+        <div class="final-alert">
+          <ul>
+            <li>Do <b>NOT</b> close your laptop until the proctor confirms you may do so.</li>
+            <li>If you have finished and would like to leave, <b>raise your hand</b> and wait for the proctor.</li>
+          </ul>
         </div>
       </div>
-
     </div>
 
   </div>
@@ -250,7 +207,6 @@
     });
   </script>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
